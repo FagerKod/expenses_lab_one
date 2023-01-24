@@ -1,19 +1,73 @@
+import { useState } from "react";
 import "./ExpenseForm.css";
-const ExpenseForm = () => {
+const ExpenseForm = ({ addExpense }) => {
+  const [expenseInput, setExpenseInput] = useState({
+    title: "",
+    amount: 0,
+    date: "",
+  });
+
+  const formInputHandler = (e) => {
+    e.preventDefault();
+    setExpenseInput((prevState) => {
+      return {
+        ...prevState,
+        [e.target.name]: e.target.value,
+      };
+    });
+  };
+
+  const submitExpense = (e) => {
+    e.preventDefault();
+    const submitData = {
+      title: expenseInput.title,
+      amount: expenseInput.amount,
+      date: new Date(expenseInput.date),
+    };
+    const submitDataWithId = { ...submitData, id: Math.random().toString() };
+    addExpense(submitDataWithId);
+    setExpenseInput({
+      title: "",
+      amount: 0,
+      date: "",
+    });
+  };
+
+  console.log("expenseInput", expenseInput);
+
   return (
-    <form>
+    <form onSubmit={submitExpense}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Rubrik</label>
-          <input type="text" />
+          <input
+            type="text"
+            name="title"
+            value={expenseInput.title}
+            onChange={formInputHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Utgift</label>
-          <input type="number" min="0.01" step="0.01" />
+          <input
+            type="number"
+            name="amount"
+            min="0.01"
+            step="0.01"
+            value={expenseInput.amount}
+            onChange={formInputHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Datum</label>
-          <input type="date" min="2023-01-01" max="2024-12-31" />
+          <input
+            type="date"
+            name="date"
+            min="2023-01-01"
+            max="2024-12-31"
+            value={expenseInput.date}
+            onChange={formInputHandler}
+          />
         </div>
       </div>
       <div className="new-expense__actions">

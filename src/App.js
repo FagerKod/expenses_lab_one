@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Expenses from "./components/expenses/Expenses";
 import NewExpense from "./components/new-expense/NewExpense";
 
@@ -22,11 +23,20 @@ const App = () => {
       amount: 666,
     },
   ];
+  const [expenseDataArr, setExpenseDataArr] = useState(expenseData);
+
+  const addExpenseHandler = (newExpense) => {
+    let newExpenseData = [...expenseDataArr, newExpense];
+    setExpenseDataArr(newExpenseData);
+  };
+
+  console.log("expenseDataArr", expenseDataArr);
+
   return (
     <>
       <h1 className="expenses-heading">Utgiftskollen</h1>
-      <NewExpense />
-      <Expenses expenseData={expenseData} />
+      <NewExpense addExpense={addExpenseHandler} />
+      <Expenses expenseData={expenseDataArr} />
     </>
   );
 };
