@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
-const ExpenseForm = ({ addExpense }) => {
+const ExpenseForm = ({ addExpense, showNewExpenseHandler }) => {
   const [expenseInput, setExpenseInput] = useState({
     title: "",
     amount: 0,
@@ -31,9 +31,8 @@ const ExpenseForm = ({ addExpense }) => {
       amount: 0,
       date: "",
     });
+    showNewExpenseHandler();
   };
-
-  console.log("expenseInput", expenseInput);
 
   return (
     <form onSubmit={submitExpense}>
@@ -71,6 +70,7 @@ const ExpenseForm = ({ addExpense }) => {
         </div>
       </div>
       <div className="new-expense__actions">
+        <button onClick={showNewExpenseHandler}>Avbryt</button>
         <button type="submit">Lägg till utgift</button>
       </div>
     </form>

@@ -1,36 +1,40 @@
 import { useState } from "react";
 import Expenses from "./components/expenses/Expenses";
 import NewExpense from "./components/new-expense/NewExpense";
-
+const EXPENSE_DATA = [
+  {
+    id: "e0",
+    date: new Date(2019, 1, 22),
+    title: "motorsåg",
+    amount: 399,
+  },
+  {
+    id: "e1",
+    date: new Date(2023, 1, 23),
+    title: "bilförsäkring",
+    amount: 300,
+  },
+  {
+    id: "e2",
+    date: new Date(2022, 1, 19),
+    title: "hemförsäkring",
+    amount: 400,
+  },
+  {
+    id: "e3",
+    date: new Date(2023, 1, 22),
+    title: "sprit",
+    amount: 666,
+  },
+];
 const App = () => {
-  const expenseData = [
-    {
-      id: "e1",
-      date: new Date(2023, 1, 23),
-      title: "bilförsäkring",
-      amount: 300,
-    },
-    {
-      id: "e2",
-      date: new Date(2023, 1, 19),
-      title: "hemförsäkring",
-      amount: 400,
-    },
-    {
-      id: "e3",
-      date: new Date(2023, 1, 22),
-      title: "sprit",
-      amount: 666,
-    },
-  ];
-  const [expenseDataArr, setExpenseDataArr] = useState(expenseData);
+  const [expenseDataArr, setExpenseDataArr] = useState(EXPENSE_DATA);
 
   const addExpenseHandler = (newExpense) => {
-    let newExpenseData = [...expenseDataArr, newExpense];
-    setExpenseDataArr(newExpenseData);
+    setExpenseDataArr((prevState) => {
+      return [newExpense, ...prevState];
+    });
   };
-
-  console.log("expenseDataArr", expenseDataArr);
 
   return (
     <>
