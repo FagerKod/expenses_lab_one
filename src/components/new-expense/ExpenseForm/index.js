@@ -21,7 +21,7 @@ const ExpenseForm = ({ addExpense, showNewExpenseHandler }) => {
     e.preventDefault();
     const submitData = {
       title: expenseInput.title,
-      amount: expenseInput.amount,
+      amount: +expenseInput.amount, // + gör det till nummer
       date: new Date(expenseInput.date),
     };
     const submitDataWithId = { ...submitData, id: Math.random().toString() };
