@@ -1,7 +1,7 @@
 import "./NewExpense.css";
 import ExpenseForm from "./ExpenseForm/index";
 import { useState } from "react";
-const NewExpense = ({ addExpense, onNewExpense }) => {
+const NewExpense = ({ addExpense }) => {
   const [showNewExpense, setShowNewExpense] = useState(false);
   const showNewExpenseHandler = () => {
     setShowNewExpense(!showNewExpense);
