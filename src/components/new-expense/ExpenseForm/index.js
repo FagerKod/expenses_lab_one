@@ -35,7 +35,7 @@ const ExpenseForm = ({ addExpense, showNewExpenseHandler }) => {
   };
 
   return (
-    <form onSubmit={submitExpense}>
+    <form className="new-expense__form" onSubmit={submitExpense}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Rubrik</label>
