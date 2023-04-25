@@ -18,11 +18,13 @@ const App = () => {
         <h3>Ett sätt att hålla koll på dina utgifter</h3>
         <p>Lägg till en ny utgift när du slösat mer av din lön</p>
       </header>
-      <NewExpense addExpense={addExpenseHandler} />
-      <Expenses expenseData={expenseDataArr} />
+      <main>
+        <NewExpense addExpense={addExpenseHandler} />
+        <Expenses expenseData={expenseDataArr} />
+      </main>
       <footer className="expenses-footer">
-        <a href="https://www.google.se">Jonas Jonassons Ekonomibyrå</a>
-        <a tabIndex="1" href="https://www.google.se">
+        <a href="http://arbetsformedlingen.se/">Arbetsförmedlingen</a>
+        <a tabIndex="1" href="https://www.skatteverket.se/">
           Skatteverket
         </a>
       </footer>
