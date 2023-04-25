@@ -38,7 +38,7 @@ const ExpenseForm = ({ addExpense, showNewExpenseHandler }) => {
     <form onSubmit={submitExpense}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
-          <label htmlFor="expense-title">Rubrik</label>
+          <label>Rubrik</label>
           <input
             type="text"
             id="expense-title"
